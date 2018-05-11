@@ -4,10 +4,10 @@ etc. we will publish an "download and run" app soon.
 <br>
 Usual procedure (clone -> navigate into folder) <br>
 // for iOS<br>
-Hit npm run-script package-mac <br>
+npm run-script package-mac <br>
 // for windows<br>
-Hit npm run-script package-win <br>
+npm run-script package-win <br>
 //for linux<br>
-Hit npm run-script package-lin 
+npm run-script package-lin 
 <br><br><br>
 Requirments: Electron and npm. 
