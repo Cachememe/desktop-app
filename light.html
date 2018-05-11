@@ -1,0 +1,1036 @@
+<head>
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <meta name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no'/>
+    <link href="https://fonts.googleapis.com/css?family=Anton&text=1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz%20%22"
+          rel="stylesheet">
+    <meta charset="utf-8"/>
+    <title>C&#9850;cheMe</title></head>
+<style>
+    .modal, .nav {
+        left: 0;
+        top: 0;
+    }
+
+    .drCon a, .save_cl {
+        text-decoration: none
+    }
+
+    .nav {
+        background: #000;
+        padding: 10px;
+        width: 100%;
+        position: fixed;
+        z-index: 56666;
+        max-height: 2em !important
+    }
+
+    .close {
+        float: right;
+        font-size: 1.5em;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        float: right;
+        margin-right: 25px
+    }
+
+    .drCon {
+        position: absolute;
+        display: none;
+        background-color: #000;
+        width: 100px;
+        z-index: -1;
+        margin: 30px 0 0 -75px;
+        border: 1px solid #000;
+        border-top: none
+    }
+
+    .drCon a {
+        color: #c4c4c4;
+        padding: 6px 8px;
+        display: block
+    }
+
+    .drCon a:hover {
+        border-bottom: 1px solid #5BC0EB;
+        color: #5BC0EB;
+        cursor: pointer
+    }
+
+    .show {
+        display: block
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, .066);
+        color: #000;
+    }
+
+    #logo2_wr, .save_cl {
+        display: inline-block;
+    }
+
+    #logo2_wr {
+        float: left
+    }
+
+    .dropbtn {
+        color: #fff;
+        cursor: pointer;
+        margin-right: -5px;
+        margin-top: -5px;
+        font-size: 1.5em;
+        border: none;
+        float: right;
+    }
+
+    .la:hover {
+        cursor: pointer;
+        border-bottom: 2px solid #F46036
+    }
+
+    .la {
+        margin: 0 2px 0 2px
+    }
+
+    .act2 {
+        border-bottom: 2px solid #234099;
+    }
+
+    body, img {
+        max-width: 500px
+    }
+
+    #start_btn {
+        display: inline-block;
+        cursor: pointer
+    }
+
+    #NightM {
+        cursor: pointer
+    }
+
+    body {
+        width: auto;
+        background: #333;
+        color: #c4c4c4;
+        margin: 0 auto;
+        text-align: center;
+        transition: background-color .3s linear;
+        font-family: BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif
+    }
+
+    .t1, .t2, img {
+        width: 100%
+    }
+
+    .mc {
+        position: relative;
+        padding: 0 1px 15px
+    }
+
+    a {
+        color: #000
+    }
+
+    .t2 {
+        bottom: 5%
+    }
+
+    .t1, .t2 {
+        left: 0;
+        font-family: Impact, Anton, sans-serif;
+        font-size: 1.6em;
+        color: #fff;
+        position: absolute;
+        text-transform: uppercase;
+        z-index: 1000;
+        pointer-events: none;
+        text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, -1px 2px 0 #000, 2px 2px 0 #000
+    }
+
+    .moon, .sun {
+        position: relative
+    }
+
+    #start_btn:active {
+        color: #F46036
+    }
+
+    #start_btn {
+        border: 2px solid grey;
+        margin-top: 10px;
+        width: 77%;
+        padding: .4em;
+        font-size: 1.2em;
+        border-radius: 3px
+    }
+
+    #NightM {
+        -webkit-tap-highlight-color: transparent;
+        font-size: 2.7em;
+        margin-top: -3.3em;
+        max-height: 45px
+    }
+
+    @keyframes MoveUpDown {
+        0% {
+            transform: translateY(-33px)
+        }
+        100% {
+            transform: translateY(0)
+        }
+    }
+
+    @keyframes DownUp {
+        0% {
+            transform: translateY(21px)
+        }
+        100% {
+            transform: translateY(0)
+        }
+    }
+
+    .moon {
+        animation: DownUp .521s normal ease-in
+    }
+
+    .sun {
+        animation: MoveUpDown .521s normal ease-in
+    }
+
+    #count1 {
+        color: #F46036
+    }
+
+    #tri_cl {
+        margin: -9% 0 -3% 0
+    }
+
+    @-moz-document url-prefix() {
+        #tri_cl {
+            margin: 0 0 1% 0
+        }
+    }
+
+    .lang {
+        border: 2px solid #234099;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px #000
+    }
+
+    @media (max-width: 321px) {
+        .t1, .t2 {
+            font-size: 1.3em !important;
+        }
+    }
+
+    .d1 {
+        max-width: 99%;
+        background-color: rgba(0, 0, 0, .066);
+        box-shadow: 0 5px 5px 2px rgba(0, 0, 0, .2)
+    }
+
+    .line1, .l2 {
+        position: relative;
+        z-index: -1;
+    }
+
+    #line2 {
+        background: red;
+        transform: rotate(17.2deg)
+    }
+
+    #line3 {
+        background: #ff7700;
+        transform: rotate(17.8deg)
+    }
+
+    #line4 {
+        background: #FFDD00;
+        transform: rotate(18.5deg)
+    }
+
+    #line5 {
+        background: #00ff00;
+        transform: rotate(19.2deg)
+    }
+
+    #line6 {
+        background: #0000ff;
+        transform: rotate(20deg)
+    }
+
+    #line7 {
+        background: #8a2be2;
+        transform: rotate(20.7deg)
+    }
+
+    #line8 {
+        background: #c77df3;
+        transform: rotate(21.4deg)
+    }
+
+    .l2 {
+        max-width: 45%;
+        height: 1px;
+        left: 55%;
+        bottom: 50px;
+        animation: second 2.5s linear;
+        animation-delay: 2s;
+        animation-direction: alternate;
+        transform-origin: 0 100%;
+        opacity: 0;
+        border-radius: 3px
+    }
+
+    @keyframes second {
+        0% {
+            width: 0;
+            opacity: .1
+        }
+        66% {
+            width: 45%;
+            opacity: 1
+        }
+        100% {
+            opacity: .3;
+            width: 100%;
+        }
+    }
+
+    .line1 {
+        max-width: 46%;
+        height: 2px;
+        background: #fff;
+        animation: myfirst 2.5s linear;
+        animation-direction: alternate;
+        transform: rotate(-13deg);
+        -moz-transform: rotate(-11deg);
+        transform-origin: 0 100%;
+        box-shadow: 2px 0 2px #fff;
+        opacity: 0;
+        animation-delay: .666s;
+    }
+
+    @keyframes myfirst {
+        0% {
+            width: 0;
+            opacity: .1
+        }
+        50% {
+            width: 55%;
+            opacity: 1
+        }
+        100% {
+            opacity: 0;
+            width: 100%;
+        }
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        background-color: #333;
+        color: #000;
+    }
+
+    .mocon {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        max-width: 350px;
+        border-radius: 5px
+    }
+
+    .py_block3 {
+        width: 63%
+    }
+
+    .py_block2 {
+        width: 50%
+    }
+
+    .py_bl {
+        display: inline-block;
+        cursor: pointer;
+        border: 2px solid grey;
+        padding: .3em;
+        margin: 5px;
+        border-radius: 5px;
+    }
+
+
+</style>
+<body>
+<div class="nav">
+    <div id="logo2_wr"><a href="light.html">
+        <div style="position:relative;">
+            <div style="position:absolute;top:-10px;left:2px;font-size:2em;color:white">&#9850;</div>
+            <div style="position:absolute;top:4px;left:10px;font-size:0.6em;color: white">&#128065;</div>
+        </div>
+    </a></div>
+    <span id="mes" style="margin-right:-25px;font-weight:bold">C&#9850;cheMe</span>
+    <div class="dropdown"><span onclick="opendd()" id="dropbtn" class="dropbtn">☰</span>
+        <div id="myD" class="drCon">
+            <a href="info.html">Info</a>
+            <a id="urban">Urban dict.</a>
+        </div>
+    </div>
+</div>
+<br><br>
+<br><br>
+<div>
+    <span style="float: left" class="act2 la" onclick="chLang(event,'eng')" id="lEng">&nbsp;🇬🇧&nbsp;</span>
+    <span style="float:left" class="la" onclick="chLang(event, 'fra')" id="lFra">&nbsp;🇫🇷&nbsp;</span>
+    <span style="float: right" class="la" onclick="chLang(event, 'ger')" id="lGer">&nbsp;🇩🇪&nbsp;</span>
+    <span style="float: right" class="la" onclick="chLang(event, 'spa')" id="lSpa">&nbsp;🇪🇸&nbsp;</span>
+    <span style="font-family:Serif!important;font-weight:bold">Novus ordo Meme</span>
+</div>
+<br>
+<div id="tri_cl"><span id="tri" style="font-size:9.5em;">&#9850;</span>
+    <div id="NightM">&#128065;</div>
+    <div id="line1" class="line1">Memes</div>
+    <div id="line2" class="l2"></div>
+    <div id="line3" class="l2"></div>
+    <div id="line4" class="l2"></div>
+    <div id="line5" class="l2"></div>
+    <div id="line6" class="l2"></div>
+    <div id="line7" class="l2"></div>
+    <div id="line8" class="l2">Life</div>
+</div>
+<br><br><br><br>
+
+
+<a href="https://www.cacheme.me" target="_blank" style="text-decoration: none" class="py_bl py_block2">
+    <span>Website</span>
+    <br>
+    <i style="font-size:12px">Visit the website</i>
+
+</a>
+<br>
+
+<span style="color: #000;" class="py_bl py_block3" id="refresh">
+    <span>Refresh Memes</span>
+    <br>
+    <i style="font-size:12px">Collect memes from the universe for offline mode</i>
+</span>
+<br>
+
+
+<a id="start_btn">Start</a>
+<br>
+<br>
+<span id="counter_span" style="display:none">
+    <span id="count1">0</span> Memes loaded</span>
+   <b>Mode: </b> <span id="online">online</span>
+
+
+<div class="modal" id="urMai">
+    <div class="mocon"><span onclick="cl()" class="close">&times;</span><input placeholder="Look in Urban Dict. 📖"
+                                                                               id="urIn">
+        <button id="urBtn" style="background: blue;border:none;">Check</button>
+        <br>
+        <blockquote id="urText" style="font-size: 0.9em">Search for stuff like "Tl;DR" or "vlog"</blockquote>
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript">
+
+    if (navigator.onLine) {
+        document.getElementById("online").style.color = "green";
+        document.getElementById("online").innerText = "online"
+
+    } else {
+        document.getElementById("online").style.color = "red";
+        document.getElementById("online").innerText = "offline"
+
+
+    }
+
+
+    var pack = 0;
+    var lg1 = "eng";
+    var ger = document.getElementById("lGer");
+    var spa = document.getElementById("lSpa");
+    var fra = document.getElementById("lFra");
+    var eng = document.getElementById("lEng");
+    var count1 = document.getElementById("count1");
+
+    function chLang(event, lg) {
+        var posts = document.getElementsByClassName("d1");
+        self.lg1 = lg;
+        ger.classList.remove("act2");
+        eng.classList.remove("act2");
+        spa.classList.remove("act2");
+        fra.classList.remove("act2");
+        (event.target).classList.add("act2");
+        while (posts.length > 0) {
+            posts[0].parentNode.removeChild(posts[0]);
+        }
+        count1.innerText = "0";
+        self.pack = 0;
+        g_m(0);
+    }
+
+    setTimeout(function () {
+        g_m(pack)
+    }, 5000);
+
+
+
+    function opendd() {
+        document.getElementById("myD").classList.toggle("show")
+    }
+
+
+    var mode_btn = document.getElementById("NightM"), night = 1, counter_sp = document.getElementById("counter_span"),
+        scrollStart = !0, start_btn = document.getElementById("start_btn");
+
+    function g_m(pack) {
+            if (navigator.onLine) {
+
+            start_btn.innerHTML = "Load More &#8634;", scrollStart = !1;
+            var t = new XMLHttpRequest;
+            t.open("GET", "https://www.cacheme.me/" + lg1 + "/" + pack + "/light/"), t.onload = function () {
+                if (200 === t.status) if (t.responseText.length > 50) {
+                    for (var e = JSON.parse(t.response), n = 0; n <= e.length - 1; n++) {
+                        var o = '<div class="d1"><a style="text-decoration: none" target="_blank" href="https://www.cacheme.me/post/' + e[n][0] + '"><h3>' + e[n][1] + '</h3></a><div class="mc"><span class="t1">' + e[n][2] + '</span><img src="memes/' + e[n][4] + '.jpg"><span class="t2">' + e[n][3] + "</span></div></div>";
+                        document.getElementsByTagName("body")[0].insertAdjacentHTML("beforeend", o)
+                    }
+                    self.pack += 15, counter_sp.style.display = "block", count1.innerText = String(self.pack)
+                } else {
+                    me("Currently no more Memes are available")
+                }
+            }, t.send();
+            setTimeout(function () {
+                scrollStart = !0
+            }, 1000)
+
+        } else {
+            scrollStart = 0;
+            for (var e = JSON.parse(localStorage.getItem("db")), n = 0; n <= e.length - 1; n++) {
+                var o = '<div class="d1"><a style="text-decoration: none" target="_blank" href="https://www.cacheme.me/post/' + e[n][0] + '"><h3>' + e[n][1] + '</h3></a><div class="mc"><span class="t1">' + e[n][2] + '</span><img src="memes/' + e[n][4] + '.jpg"><span class="t2">' + e[n][3] + "</span></div></div>";
+                document.getElementsByTagName("body")[0].insertAdjacentHTML("beforeend", o)
+            }
+        }
+    }
+
+    mode_btn.onclick = function () {
+        0 === night ? (document.body.style.backgroundColor = "#333", document.body.style.color = "#c4c4c4", night = 1, mode_btn.classList.remove("moon", "sun"), mode_btn.classList.add("sun"), mode_btn.innerHTML = "🌓") : (document.body.style.color = "black", document.body.style.backgroundColor = "rgb(255,255,255)", night = 0, mode_btn.innerHTML = "🌞", mode_btn.classList.remove("moon", "sun"), mode_btn.classList.add("moon"))
+    }, document.addEventListener("scroll", function () {
+        scrollStart && document.body.scrollHeight - 1e3 <= document.body.scrollTop + window.innerHeight && g_m(pack)
+    }, true), start_btn.onclick = function () {
+        g_m(pack)
+    }, navigator.userAgent.match(/Android/) && (document.getElementById("tri").innerText = "△", mode_btn.style.marginTop = "-2.6em", mode_btn.style.fontSize = "2.4em", document.getElementById("tri_cl").style.margin = "5% 0 -10% 0"), navigator.userAgent.match(/Apple/) && (mode_btn.innerHTML = "&#128065;");
+
+
+    document.getElementById("urIn").onkeydown = function (e) {
+        if (e.keyCode === 13) {
+            document.getElementById("urBtn").click()
+        }
+    };
+    urMod = document.getElementById("urMai");
+    document.getElementById("urban").onclick = function () {
+        urMod.style.display = "block";
+    };
+    document.getElementById("urBtn").onclick = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', "https://api.urbandictionary.com/v0/define?term=" + document.getElementById("urIn").value);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var x1 = JSON.parse(xhr.responseText).list;
+                if (x1[1]) {
+                    document.getElementById("urText").innerHTML = x1[0].definition + "<p>Read more about <a href='" + x1[0].permalink + "' target='_blank'> it </a></p>";
+                } else {
+                    document.getElementById("urText").innerText = "Nothing found"
+                }
+            }
+        };
+        xhr.send();
+    };
+
+    function cl() {
+        urMod.style.display = "none"
+    };
+
+
+    var ix = 0;
+    var speed = 20;
+    var mesD = document.getElementById("mes");
+    var sendMes = true;
+
+    function me(e) {
+        if (sendMes) {
+            mesD.innerText = "", sendMes = !1, mesD.classList.add("bubble"), function s() {
+                ix < e.length && (mesD.innerHTML += e.charAt(ix), ix++, setTimeout(s, speed))
+            }(), setTimeout(function () {
+                mesD.innerText = "C♺cheMe", mesD.classList.remove("bubble"), sendMes = !0, ix = 0
+            }, 5e3)
+        }
+    }
+
+    var first_visit = localStorage.getItem("db")
+    if (!first_visit) {
+        localStorage.setItem("db", JSON.stringify([[150,
+                "could be",
+                "WHAT IF SOY MILK IS REGULAR MILK",
+                "INTRODUCING ITSELF IN SPANISH",
+                "conkea"
+            ],
+                [
+                    96,
+                    "6 months",
+                    "I DON'T KNOW MY OWN RELATIONSHIP STATUS",
+                    "AND AT THIS POINT I'M TOO AFRAID TO ASK",
+                    "afraidask"
+                ],
+                [
+                    101,
+                    "you know like just eat it...",
+                    "WHAT I IF TOLD YOU",
+                    "YOU CAN EAT WITHOUT POSTING IT ON INSTAGRAM?",
+                    "toldyou"
+                ],
+                [
+                    146,
+                    "funny tittle",
+                    "IF THE OPPOSITE OF PRO IS CON",
+                    "IS THE OPPOSITE OF PROGRESS CONGRESS?",
+                    "philosoraptor"
+                ],
+                [
+                    143,
+                    "if you think about it",
+                    "WE'RE CALLED PATIENTS",
+                    "BECAUSE WE'RE ALWAYS IN THE WAITING ROOM",
+                    "suddenclarity"
+                ],
+                [
+                    30,
+                    "Right",
+                    "GOES AS BATMAN FOR HALLOWEEN",
+                    "PARENTS GET KILLED",
+                    "blbrian"
+                ],
+                [
+                    98,
+                    "???",
+                    "WHAT WOULD HAPPEN",
+                    "IF PINOCCHIO SAID HIS NOSE WOULD GROW",
+                    "philosoraptor"
+                ],
+                [
+                    73,
+                    "We all know him",
+                    "MAKES FUN OF YOUR JOB",
+                    "UNEMPLOYED",
+                    "scum"
+                ],
+                [
+                    77,
+                    "humans",
+                    "IF WE COULD NOT HAVE A NUCLEAR WAR",
+                    "THAT WOULD BE GREAT",
+                    "would_great"
+                ],
+                [
+                    68,
+                    "You know its true...",
+                    "VIDEO GAME SCENES",
+                    "AIN'T NO BODY GOT TIME FOR THAT",
+                    "no_time"
+                ],
+                [
+                    97,
+                    "something like dave. maybe?",
+                    "I DON'T KNOW YOUR NAME",
+                    "AND AT THIS POINT I'M TOO AFRAID TO ASK",
+                    "afraidask"
+                ],
+                [
+                    99,
+                    "like....",
+                    "IS THERE ANOTHER WORD",
+                    "FOR SYNONYM?",
+                    "philosoraptor"
+                ],
+                [
+                    100,
+                    "I IF IF I",
+                    "WHAT I IF TOLD YOU",
+                    "YOU READ THE TOP LINE WRONG?",
+                    "toldyou"
+                ],
+                [
+                    70,
+                    "talking to you windows",
+                    "SYSTEM UPDATES?",
+                    "AIN'T NOBODY GOT TIME FOR THAT",
+                    "no_time"
+                ],
+                [
+                    72,
+                    "Real life",
+                    "WHEN YOU BEEN DIETING FOR 2 HOURS STRAIGHT",
+                    "BUT YOU ARE STILL THE SAME WEIGHT",
+                    "ytho"
+                ],
+                [
+                    74,
+                    "some people...",
+                    "GRANDPA GETs SURGERY",
+                    "STEALS PAIN MEDS",
+                    "scum"
+                ],
+                [
+                    69,
+                    "new title",
+                    "SAFELY REMOVE USB?",
+                    "AIN'T NOBODY GOT TIME FOR THAT",
+                    "no_time"
+                ],
+                [
+                    82,
+                    "....",
+                    "COMES HOME AFTER WORK",
+                    "RUBS GIRLFRIEND'S FEET",
+                    "gguyg"
+                ],
+                [
+                    67,
+                    "Totally me",
+                    "SLEEP?",
+                    "AIN'T NO BODY GOT TIME FOR THAT",
+                    "no_time"
+                ],
+                [
+                    83,
+                    "its true",
+                    "YOU CAN'T GET YOUR HEART BROKEN IF",
+                    "YOU'RE TOO UGLY TO DATE",
+                    "youcant"
+                ],
+                [
+                    44,
+                    "the land needs new memes",
+                    "WHEN THE GIRL DOES NOT STOP",
+                    "TALKING BULLSHIT",
+                    "animal1"
+                ],
+                [
+                    17,
+                    "title trump",
+                    "HERE WE",
+                    "GO AGAIN",
+                    "robertdowney"
+                ],
+                [
+                    22,
+                    "One Title",
+                    "MY FACE WHEN PEOPLE SAY",
+                    "HOW TALL ARE YOU",
+                    "robertdowney"
+                ],
+                [
+                    28,
+                    "Gehabt",
+                    "HEAVY NIGHT OF DRINKING",
+                    "WOKE UP WITH KEYS, WALLET AND PHONE",
+                    "suckid"
+                ],
+                [
+                    85,
+                    "funny title",
+                    "YOU CAN'T GET A HANGOVER",
+                    "IF YOU DON'T STOP DRINKING",
+                    "youcant"
+                ],
+                [
+                    18,
+                    "title3. 321 3 21",
+                    "MY REACTION WHEN SOMEONE TRIES",
+                    "TO MAKE ME EAT HEALTHY FOOD",
+                    "robertdowney"
+                ],
+                [
+                    33,
+                    "some title",
+                    "WHO THE HELL HAS",
+                    "TIME FOR THIS?",
+                    "picard1"
+                ],
+                [
+                    19,
+                    "title 321 123. 132",
+                    "WHEN SOMEONE KEEPS TALKING TO THE CASHIER",
+                    "AFTER THEY PAID FOR THEIR STUFF",
+                    "robertdowney"
+                ],
+                [
+                    4,
+                    "title iii",
+                    "FALLS ASLEEP IN CLASS",
+                    "WET DREAM",
+                    "blbrian"
+                ],
+                [
+                    87,
+                    "Does he have a soul?",
+                    "CHUCK NORRIS",
+                    "IS A GINGER",
+                    "suddenclarity"
+                ],
+                [
+                    42,
+                    "waiting 10 sec for a website",
+                    "AINT NO BODY",
+                    "GOT TIME FOR THIS",
+                    "no_time"
+                ],
+                [
+                    59,
+                    "hey neu",
+                    "EATS FORTUNE COOKIE",
+                    "HAS AN ALLERGIC REACTION",
+                    "blbrian"
+                ],
+                [
+                    15,
+                    "title",
+                    "RAN INTO MY EX",
+                    "SHE GOT FAT",
+                    "suckid"
+                ],
+                [
+                    43,
+                    "critical",
+                    "SO YOU ARE TELLING ME",
+                    "THAT YOU USE CLEAN WATER TO FLUSH THE TOILET",
+                    "telling_me"
+                ],
+                [
+                    7,
+                    "312312132",
+                    "ME: WHY ARE YOU MAD AT ME?",
+                    "HER: YOU SHOULD KNOW THAT",
+                    "animal1"
+                ],
+                [
+                    39,
+                    "title",
+                    "YOUR FACE WHEN",
+                    "YOU WON AGAINST YOUR OLDER BROTHER",
+                    "spiderface"
+                ],
+                [
+                    6,
+                    "kkkkkkkkk",
+                    "GETS INVITED TO PLAY A GAME",
+                    "SAW",
+                    "blbrian"
+                ],
+                [
+                    1,
+                    "title 1",
+                    "DOWNLOADS ONE SONG",
+                    "GETS IN PRISON",
+                    "blbrian"
+                ],
+                [
+                    23,
+                    "Uploaded via phone",
+                    "GO TO MCDONNELL'S, GET HAPPY MEAL",
+                    "EXTRA CHICKEN NUGGET",
+                    "suckid"
+                ],
+                [
+                    10,
+                    "title123",
+                    "WHAT THE HELL ARE YOU DOING?",
+                    "YOU RUIN THE PLAN!",
+                    "animal1"
+                ],
+                [
+                    20,
+                    "trimp",
+                    "WHEN ITS THE FIRST DAY",
+                    "OF SCHOOL",
+                    "robertdowney"
+                ],
+                [
+                    9,
+                    "title 243423",
+                    "WHEN SHE STARTS TALKING BOUT 'WE' A LOT",
+                    "AND UR TRYNA FIGUR WHEN SHE STARTED TALKING FRENCH",
+                    "animal1"
+                ],
+                [
+                    34,
+                    "title",
+                    "WHY ARE YOU COMMENTING",
+                    "WHEN YOU HAVEN'T READ THE ARTICLE",
+                    "picard1"
+                ],
+                [
+                    25,
+                    "Hshaha",
+                    "FARTED IN THE ELEVATOR",
+                    "SOMEONE ELSE GETS BLAMED",
+                    "suckid"
+                ],
+                [
+                    86,
+                    "title",
+                    "THE BRAIN",
+                    "NAMED ITSELF",
+                    "suddenclarity"
+                ],
+                [
+                    27,
+                    "aaaaaaaaasdadasadsads",
+                    "MADE ENOUGH MONEY FROM THIS MEME",
+                    "TO FUND MY DAD'S KIDNEY TRANSPLANT",
+                    "suckid"
+                ],
+                [
+                    40,
+                    "title",
+                    "YOUR FACE WHEN",
+                    "YOU SEE THAT YOUR FOOD IS COMING",
+                    "spiderface"
+                ],
+                [
+                    26,
+                    "sdadasadsads",
+                    "HELL",
+                    "YEAH",
+                    "suckid"
+                ],
+                [
+                    31,
+                    "Trump style",
+                    "THE FACE YOU MAKE WHEN",
+                    "STUPID PEOPLE TALK",
+                    "robertdowney"
+                ],
+                [
+                    5,
+                    "es nervt",
+                    "TAKES COUSIN TO PROM",
+                    "SCORES!",
+                    "blbrian"
+                ],
+                [
+                    2,
+                    "title 32",
+                    "ESCAPES A BURNING BUILDING",
+                    "GETS HIT BY FIRETRUCK",
+                    "blbrian"
+                ],
+                [
+                    37,
+                    "Spiderman 1",
+                    "YOUR FACE WHEN",
+                    "YOUR CRUSH SITS NEXT TO YOU",
+                    "spiderface"
+                ],
+                [
+                    32,
+                    "title",
+                    "WHY THE HELL IS THERE",
+                    "ANOTHER TWIGHLIGHT MOVIE",
+                    "picard1"
+                ],
+                [
+                    41,
+                    "one does not simply",
+                    "ONE DOES NOT SIMPLY",
+                    "WALK INTO MORDOR",
+                    "not_simp"
+                ],
+                [
+                    16,
+                    "title neu",
+                    "I",
+                    "ROLL",
+                    "robertdowney"
+                ],
+                [
+                    84,
+                    "title",
+                    "YOU CAN'T GET ROBBED",
+                    "WHEN YOU ARE BROKE",
+                    "youcant"
+                ],
+                [
+                    8,
+                    "132312132312",
+                    "WHEN YOU MISS SOMEONES CALL BUT CALL",
+                    "BACK 0.1 SEC LATER AND THEY DON'T ANSWER",
+                    "animal1"
+                ],
+                [
+                    35,
+                    "title 2133",
+                    "WHY THE FUCK DONT CONSOLES",
+                    "COME WITH TWO CONTROLLERS",
+                    "picard1"
+                ],
+                [
+                    54,
+                    "to hard",
+                    "WHO IS SUPPOSED TO READ  THIS",
+                    "ITS FUCKING SMALL",
+                    "picard1"
+                ],
+                [
+                    3,
+                    "title was",
+                    "ORDERED BEATS BY DR. DRE",
+                    "DR. DRE CAME TO HIS HOME AND BEATS HIM",
+                    "blbrian"
+                ],
+                [
+                    21,
+                    "lallalal 312123312",
+                    "BUY USED CAR",
+                    "IT'S AN ALIEN ROBOT",
+                    "suckid"
+                ]
+            ])
+        );
+    }
+
+    document.getElementById("refresh").onclick = function (ev) {
+        if (navigator.onLine) {
+
+            var t = new XMLHttpRequest;
+            t.open("GET", "https://www.cacheme.me/refresh_meme_dict/"), t.onload = function () {
+                if (200 === t.status) {
+                    localStorage.setItem("db", t.responseText)
+                    alert("Freshed up your Meme-stash")
+                }
+            }, t.send();
+        }
+        else {
+            alert("You are not online, we can't connect to the server")
+        }
+    };
+
+</script>

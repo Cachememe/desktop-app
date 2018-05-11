@@ -1,0 +1,622 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+<title>C&#9850;cheMe</title>
+<style>
+input {
+border-radius: 5px;
+border: 1px solid #000;
+padding: 5px;
+margin: 3px;
+}.nav {
+background: #000;
+padding: 10px;
+width: 100%;
+position: fixed;
+z-index: 5;
+max-height: 2em !important;
+top: 0;
+left: 0;
+}.dropdown {
+position: relative;
+display: inline-block;
+float: right;
+margin-right: 25px;
+}.dropdown-content {
+position: absolute;
+display: none;
+background-color: #000;
+width: 100px;
+z-index: -1;
+margin-left: -75px !important;
+margin-top: 30px;
+border: 1px solid #000;
+border-top: none
+}.dropdown-content a {
+color: #c4c4c4;;
+padding: 6px 8px;
+text-decoration: none;
+display: block;
+}.dropdown-content a:hover {
+border-bottom: 1px solid #5BC0EB;
+color: #5BC0EB;
+}#logo2_wr {
+float: left;
+display: inline-block;
+}body {
+width: auto;
+max-width: 500px;
+background: #333;
+color: #c4c4c4;
+margin: 0 auto;
+text-align: center;
+transition: background-color 250ms linear;
+font-family: BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}.dropbtn {
+margin-right: -5px !important;
+margin-top: -5px;
+font-size: 1.5em;
+border: none;
+float: right;
+cursor: pointer;
+color: white;
+}.show {
+display: block;
+}.modal {
+display: none;
+position: fixed;
+z-index: 10;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0, 0, 0, 0.4);
+color: black !important;
+}.mocon {
+background-color: #fefefe;
+margin: 15% auto;
+padding: 20px;
+border: 1px solid #888;
+max-width: 350px;
+color: #000;
+}.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}.close:hover,
+.close:focus {
+color: #000;
+text-decoration: none;
+cursor: pointer;
+}#id_username, #id_password, #id_password1, #id_password2, #id_email {
+border-radius: 5px;
+border: 1px solid #000;
+padding: 5px;
+margin: 3px;
+}@-moz-document url-prefix() {
+.dropdown-content {
+margin-top: 30px
+}
+}.la:hover {
+cursor: pointer;
+border-bottom: 2px solid #F46036
+}.la {
+margin: 10px
+}.act2 {
+border-bottom: 2px solid #234099;
+}
+.button__badge{
+background-color:#fa3e3e;
+border-radius:2px;
+color:white;
+padding:1px 3px;
+font-size:10px;
+position:absolute;
+top:-8px;
+right:-5px;
+border:1px solid #234099;
+}
+</style>
+<div class="nav">
+<div id="logo2_wr">
+<a href="light.html">
+<div style="position:relative;">
+<div style="position:absolute; top:-10px; left:2px;font-size:2em;color: white">&#9850;</div>
+<div style="position:absolute; top:4px; left:10px;font-size:0.6em;color:white">&#128065;</div>
+</div>
+</a>
+</div><span id="mes" style="margin-right:-25px;font-weight:bold">C&#9850;cheMe</span>
+<div class="dropdown">
+<span id="dropbtn" onclick="myFunction()" class="dropbtn">☰</span>
+<div id="myDropdown" class="dropdown-content">
+<a href="info.html"> Info</a>
+<a id="urban">Urban dict.</a>
+</div>
+</div>
+</div>
+
+<div class="modal" id="urMai">
+<div class="mocon"><span onclick="cl()" class="close">&times;</span><input placeholder="Find in Urban Dictonary 📖"
+ id="urIn">
+<button id="urBtn" style="background: blue;border:none;">Check</button>
+<br>
+<blockquote id="urText" style="font-size: 0.9em">Search for words like "Tl;DR" or "vlog"</blockquote>
+</div>
+</div>
+<br>
+<br>
+<br>
+
+<style>
+a {
+color: #000;
+}
+
+b {
+font-size: 1.1em;
+font-weight: bolder;
+}
+
+body {
+color: lightgrey;
+padding: 6px;
+max-width: 600px !important;
+}
+
+.main_title {
+color: white;
+text-align: center;
+padding: 3px;
+background: grey;
+border-radius: 5px;
+}
+
+#NightM {
+cursor: pointer;
+font-size: 1.55em;
+margin-top: -4.3em;
+max-height: 45px;
+color: white;
+margin-left: 4px;
+-webkit-tap-highlight-color: transparent;
+}
+
+#show_ex_img {
+border-radius: 5px;
+width: 90%;
+object-position: center;
+}
+
+.mc {
+position: relative;
+padding: 0 1px 15px 1px;
+text-align: center;
+}
+
+.t2 {
+bottom: 5%;
+}
+
+.t1, .t2 {
+left: 0;
+font-family: Impact, Anton, sans-serif;
+width: 100%;
+min-font-size: 20px;
+font-size: 1.5em;
+max-font-size: 2em;
+color: white;
+position: absolute;
+text-transform: uppercase;
+z-index: 1000;
+pointer-events: none;
+text-shadow: -1px -1px 0 #000, 2px -1px 0 #000, -1px 2px 0 #000, 2px 2px 0 #000;
+}
+
+@-webkit-keyframes MoveUpDown {
+0% {
+-webkit-transform: translateY(-33px);
+transform: translateY(-33px);
+}
+100% {
+-webkit-transform: translateY(0);
+transform: translateY(0);
+}
+}
+
+@keyframes MoveUpDown {
+0% {
+-webkit-transform: translateY(-33px);
+-ms-transform: translateY(-33px);
+transform: translateY(-33px);
+}
+100% {
+-webkit-transform: translateY(0);
+-ms-transform: translateY(0);
+transform: translateY(0);
+}
+}
+
+@-webkit-keyframes DownUp {
+
+0% {
+-webkit-transform: translateY(21px);
+transform: translateY(21px);
+}
+100% {
+-webkit-transform: translateY(0);
+transform: translateY(0);
+}
+}
+
+@keyframes DownUp {
+0% {
+-webkit-transform: translateY(21px);
+-ms-transform: translateY(21px);
+transform: translateY(21px);
+}
+100% {
+-webkit-transform: translateY(0);
+-ms-transform: translateY(0);
+transform: translateY(0px);
+}
+}
+
+.test1 {
+position: relative;
+-webkit-animation: DownUp .521s normal ease-in;
+animation: DownUp .521s normal ease-in;
+}
+
+.test2 {
+position: relative;
+-webkit-animation: MoveUpDown .521s normal ease-in;
+animation: MoveUpDown .521s normal ease-in;
+}
+
+@-moz-document url-prefix() {
+#NightM {
+margin-top: -3.4em;
+}
+}
+
+.toggleCl {
+display: none;
+}
+
+.show {
+display: block !important;
+}
+
+.act {
+border: 2px solid #234099;
+transition: .33s ease;
+box-shadow: 2px 2px 2px #000;
+border-radius: 5px
+}
+.center{
+text-align: center;
+}
+
+
+
+.img1 {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+</style>
+<span style="float: right;cursor:pointer;display: none" onclick="chLang(event, 'ger')" id="lGer">&nbsp;🇩🇪&nbsp;</span>
+
+<a style="float: right;text-decoration: none;display: none" onclick="chLang(event, 'eng')" id="lEng" href="info.html"
+ class="act">&nbsp;🇬🇧&nbsp;</a>
+
+<div class="row" style="text-align: left; display: inline-block;">
+
+<div id="how_it_works">
+<h2 class="main_title" id="how_title">How it works ⚙</h2>
+
+<div class="center">The idea is pretty fly, we <a
+href="https://en.wikipedia.org/wiki/Cache_(computing)">Cache</a> images once and
+append text dynamically to each image.
+</div>
+<br>
+
+
+<img src="https://s3.us-east-2.amazonaws.com/cacheme.media/info2.jpeg"
+ style="border-radius: 5px;max-width: 99%">
+<br>
+<br>
+Since we download plain text which requires just a few kilobytes, Cacheme.me will be there for you
+even when your mobile connection has been throttled and you are under a rock in the middle of nowhere.
+<br><br>
+<div class="center">
+
+<b>Advantages:</b><br>
+1. Requires almost no data volume!<br>
+2. Requires almost no storage space!<br>
+3. Reliable despite bad connection!
+<br>
+</div>
+</div>
+
+
+<div id="fastest">
+</div>
+<br>
+<div id="usage" style="text-align: justify;">
+<h2 class="main_title">⚡ Data Usage</h2>
+{# After the Memes (around 500kb) got Cached, only very small data chunks of text#}
+{#(1kb-10kb) get transferred.<br>#}
+Even in 2018 a huge amount of people around the globe do not have access to a 3G internet connection and
+are trapped inside a memeingless world.<br><br>
+Beside the revolutionary low data meme format, our goal was to minimize the data usage on the entire platform,
+to make entertainment accessible to everybody. We achieved this by renouncing high quality images, user behavior
+analysis and fancy web design (we simply kept it core AF).
+To put this in numbers: Your average website
+<a href="https://www.wired.com/2016/04/average-webpage-now-size-original-doom/" target="_blank">
+has more than <i>2.300kb</i></a>, while we stick with <i>13kb</i>.
+
+
+<br><br>
+
+
+
+<br>
+<div style="text-align: center">
+<button id="show_ex_btn">Show data usage example</button>
+
+</div>
+
+<div style="text-align: center">
+<img src="" id="show_ex_img" style="height: 0"><br><br>
+<i id="show_ex_text" style="display: none;font-size: 0.8em"> Example from the Light Version with 100 loaded posts,
+only 15kb were transferred in total. <br>
+Each "Type XHR" are 15 posts, the images are already "Cached" and do not transfer any data at all. <br>
+</i>
+</div>
+
+</div>
+<div id="other_stuff">
+<h2 class="main_title">Other Stuff</h2>
+<div>
+<span id="toggle_night_btn" style="cursor: pointer">🌓<b> Day/Nightmode</b></span><br>
+<div id="toggle_night" class="toggleCl">
+<br>
+<div style="text-align: center">Click inside the triangle and feel the magic...</div>
+<div style="text-align: center; margin-top: -5%">
+<span id="tri" style="font-size: 8em;">△</span>
+<div id="NightM">&#128065;</div>
+<br><br>
+<i id="night_info" style="display: none">(Works the same way on the other pages)</i>
+</div>
+</div>
+</div>
+<br>
+<div>
+<b id="toggle_preload_btn" style="cursor: pointer">&#8634; &nbsp;Preload posts</b><br>
+<div id="toggle_preload" class="toggleCl">
+When you only have internet connection for a few seconds, hit the "Start/Load More" button a couple
+times and you will be supplied with Memes for the next hours.
+</div>
+</div>
+<br>
+<div>
+<span id="toggle_cookie_btn" style="cursor: pointer">🍪<b> Cookies?</b></span><br>
+<div id="toggle_cookie" class="toggleCl" style="text-align: justify">
+
+    <br>
+    We use a cookie to secure the login process and the <a target="_blank" href="https://en.wikipedia.org/wiki/Web_storage">local Webstorage</a>
+    for your preferences so you don't have to select "Grande" and your language each time you visit the site.
+    The Light version doesn't use cookies/the Webstorage at all.
+
+
+
+<br>
+<br>
+    <div style="text-align:center!important;">
+        Are there any third-party cookies?
+        <br>
+        <img title="How About No GIF" width="77%" class="img1" id="gif1" src="">
+    </div>
+</div>
+</div>
+<br>
+<div>
+<b id="toggle_program_btn" style="cursor: pointer">▾ You program and want to help?</b><br><br>
+<div id="toggle_program" class="toggleCl" style="text-align: justify">
+<i>We will post the code open source on GitHub, if you worked with HTML, CSS, JS or
+Python/Go feel free to get involved. </i>
+    <br><br>
+<i>The Code for the Android (Kotlin) App will be in a second repository, if you know your way around,
+please contact us the <a
+href="https://play.google.com/store/apps/details?id=com.herokuapp.meme_maschine.low_data">App</a>
+is still in Beta.</i>
+    <br><br>
+<i>iOS? We are making the App and the beta seems stable, will be published soon.</i><br><br>
+</div>
+</div>
+
+
+<b id="toggle_spread_btn" style="cursor:pointer;">💬 Spread the word </b>
+<div id="toggle_spread" class="toggleCl" style="text-align: justify"><br>
+Since we don't have any ads and it's an open source
+project, you probably already figured there is no plan to get rich but there is one to take over the world with memes and we need your help to do so. 
+{#<!-- Tell everybody about it and help us to establish the new Meme format.-->#}
+
+{# Holla @ your amigos all around the world. #}
+</div>
+<br>
+<br>
+
+<b id="toggle_thanks_btn" style="cursor:pointer;"><span style="color:indianred">♥</span> Thanks </b>
+
+<div style="text-align: center">
+<div style="background-color: #333333;border-radius:5px;" id="toggle_thanks" class="toggleCl"><br>
+<br>
+<a href="http://www.freecodecamp.org" target="_blank">
+<img width="35%" src="https://s3.amazonaws.com/freecodecamp/freecodecamp_logo.svg">
+</a>
+<br>
+<div style="display:inline-block">
+<a href="http://www.python.org" target="_blank">
+<img style="float: left;display:inline-block;margin:0 0 0 15%" width="30%"
+src="https://www.python.org/static/opengraph-icon-200x200.png">
+</a>
+<a href="http://www.golang.org" target="_blank">
+<img style="float: right;display:inline-block;margin:8% 15% 0 0" width="25%"
+src="https://s3.us-east-2.amazonaws.com/cacheme.media/media/me/gopher_head-min.png">
+</a>
+</div>
+<br>
+<br>&
+<span>Coffe ☕ + to the peoples of the internets</span><br>
+<br>
+</div>
+</div>
+<br>
+</div>
+<br>
+<br>
+
+<br>
+<br>
+<a href="https://github.com/Cachememe/Cachememes">Demo Code</a>
+<br>
+<br>
+<br>
+<i> Contact: Info@cacheme.me</i>
+
+<div style="text-align: center">
+<button id="surprise">Surprise me</button>
+</div>
+<div id="surprise_div" style="opacity: 0;text-align: center;">
+<div class="mc">
+<img id="surprise_img" style="width: 90%;border-radius: 5px;" src="">
+<span class="t2">Surprise Honeybear</span>
+</div>
+<br>
+</div>
+</div>
+
+<script>
+var lg1 = "eng"
+var ger = document.getElementById("lGer")
+var eng = document.getElementById("lEng")
+
+function chLang(event, lang) {
+self.lg1 = lang;
+ger.classList.remove("act");
+eng.classList.remove("act");
+(event.target).classList.add("act");
+}
+
+
+var counter123 = 0
+var surprise_btn = document.getElementById("surprise")
+surprise_btn.onclick = function () {
+document.getElementById("surprise_div").style.opacity = 1
+document.getElementById("surprise_img").src = "https://s3.us-east-2.amazonaws.com/cacheme.media/surprise.jpg"
+counter123 += 1
+if (counter123 === 2) {
+alert("You clicked the button more than once but there is just one surprise :(")
+}
+};
+document.getElementById("show_ex_btn").onclick = function () {
+document.getElementById("show_ex_img").style.height = "auto"
+document.getElementById("show_ex_img").src = "https://s3.us-east-2.amazonaws.com/cacheme.media/media/me/usageL.jpg"
+document.getElementById("show_ex_text").style.display = "block"
+};
+
+document.getElementById("toggle_preload_btn").onclick = function () {
+document.getElementById("toggle_preload").classList.toggle("show")
+};
+
+document.getElementById("toggle_cookie_btn").onclick = function () {
+document.getElementById("toggle_cookie").classList.toggle("show")
+    document.getElementById("gif1").src="https://media.giphy.com/media/RddAJiGxTPQFa/giphy.gif"
+  
+};
+document.getElementById("toggle_program_btn").onclick = function () {
+document.getElementById("toggle_program").classList.toggle("show")
+};
+
+document.getElementById("toggle_night_btn").onclick = function () {
+document.getElementById("toggle_night").classList.toggle("show") //.style.display = "block";
+};
+
+document.getElementById("toggle_thanks_btn").onclick = function () {
+document.getElementById("toggle_thanks").classList.toggle("show") //.style.display = "block";
+};
+
+
+ document.getElementById("toggle_spread_btn").onclick = function () {
+document.getElementById("toggle_spread").classList.toggle("show") //.style.display = "block";
+};
+
+
+
+var mode_btn = document.getElementById("NightM")
+var night_info = document.getElementById("night_info")
+var night = 1
+
+function nightFunc(event) {
+night_info.style.display = "block";
+0 === night ? (document.body.style.backgroundColor = "#333", document.body.style.color = "#c4c4c4", night = 1, mode_btn.classList.remove("test1", "test2"), mode_btn.classList.add("test2"), mode_btn.innerHTML = "🌓") : (document.body.style.color = "black", document.body.style.backgroundColor = "rgb(255,255,255)", night = 0, mode_btn.innerHTML = "🌞", mode_btn.classList.remove("test1", "test2"), mode_btn.classList.add("test1"))
+}
+
+mode_btn.onclick = function (ev) {
+nightFunc()
+}
+
+
+var tri = document.getElementById("tri")
+if ((navigator.userAgent.match(/Apple/))) {
+tri.innerHTML = "&#9850;"
+}
+
+function $(id) {
+return document.getElementById(id)
+}function myFunction() {
+document.getElementById("myDropdown").classList.toggle("show");
+}
+
+
+urMod = $("urMai");
+$("urban").onclick = function () {
+urMod.style.display = "block";
+};
+$("urBtn").onclick = function () {
+var xhr = new XMLHttpRequest();
+xhr.open('GET', "https://api.urbandictionary.com/v0/define?term=" + $("urIn").value);
+xhr.onload = function () {
+if (xhr.status === 200) {
+var x1 = JSON.parse(xhr.responseText).list;
+if (x1[1]) {
+$("urText").innerHTML = x1[0].definition + "<p>Read more about <a href='" + x1[0].permalink + "' target='_blank'> it </a></p>";
+} else {
+$("urText").innerText = "Nothing found"
+}
+}
+};
+xhr.send();
+};
+$("urIn").onkeydown = function (e) {
+if (e.keyCode == 13) {
+$("urBtn").click()
+}
+};function cl() {
+urMod.style.display = "none"
+}
+
+
+
+
+
+
+
+</script>
+
+
