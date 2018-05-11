@@ -1,13 +1,15 @@
 {
-  "name": "cacheme",
+  "name": "CacheMe",
   "version": "1.0.0",
   "description": "low data memes",
   "main": "index.js",
+  "website":"https://www.CacheMe.me",
+  "app-category-type": "public.app-category.entertainment",
   "scripts": {
     "start": "electron .",
     "package-mac": "electron-packager . CacheMe --overwrite --asar=true --platform=darwin --arch=x64 --icon=Icon.icns --prune=true --out=release-builds",
     "package-lin": "electron-packager . CacheMe --overwrite --asar=true --platform=linux --arch=x64 --icon=Icon.png --prune=true --out=release-builds",
-    "package-win": "electron-packager . CacheMe --overwrite --asar=true --platform=win32 --arch=ia32 --icon=Icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE"
+    "package-win": "electron-packager . CacheMe --overwrite --asar=true --platform=win32 --arch=ia32 --icon=Icon.ico --prune=true --out=release-builds-win --version-string.CompanyName=CM --version-string.FileDescription=CM"
   },
   "author": "",
   "license": "ISC",
