@@ -7,12 +7,10 @@ Usual procedure (clone -> navigate into directory -> npm install) <br>
 npm run-script package-mac <br>
 // for windows<br>
 npm run-script package-win <br>
-//for linux<br>
-npm run-script package-lin 
-<br><br><br>
+<br><br>
 a new directory (called release-builds) will be created with the app inside.
 
 
-Requirments: Electron, electron-packager and npm 
+Requirements: Electron, electron-packager and npm
 
 
